@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "c7e1bd38-4e3c-4dde-ab59-d3268e05ae2f",
+		"name": "Ningrat",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "social",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "provider",
+											"value": "facebook",
+											"type": "text"
+										},
+										{
+											"key": "provider_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "data",
+											"value": "[]",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "user@mailinator.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APP_URL_API}}/auth/social/login",
+									"host": [
+										"{{APP_URL_API}}"
+									],
+									"path": [
+										"auth",
+										"social",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}
