@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\Auth\Social;
+namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserSocialite;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
- * @group auth/social
+ * @group auth
  */
 class LoginController extends Controller
 {
@@ -15,10 +15,8 @@ class LoginController extends Controller
      * POST login
      * @headerParam Accept application/json
      * @headerParam Content-Type application/x-www-form-urlencoded
-     * @bodyParam provider string required
-     * @bodyParam provider_id string required
-     * @bodyParam data string required Array Example: []
      * @bodyParam email string required Email Example: user@mailinator.com
+     * @bodyParam password string required
      * @response 200
      *  {
      *      "data": {
@@ -29,37 +27,27 @@ class LoginController extends Controller
      *  {
      *      "message": "The given data was invalid.",
      *      "errors": {
-     *          "provider": [
-     *              "The provider field is required."
-     *          ],
-     *          "provider_id": [
-     *              "The provider id field is required."
-     *          ],
-     *          "data": [
-     *              "The data field is required."
-     *          ],
      *          "email": [
      *              "The email field is required.",
      *              "The email must be a valid email address."
+     *          ],
+     *          "password": [
+     *              "The password field is required."
      *          ]
      *      }
      *  }
      */
-    public function store(\App\Http\Requests\Api\Auth\Social\Login\StoreRequest $request)
+    public function store(\App\Http\Requests\Api\Auth\Login\StoreRequest $request)
     {
-        $userSocialite = UserSocialite::createOrUpdateUserSocialiteByProviderAndProviderId(
-            $request->input('data'),
-            $request->input('provider'),
-            $request->input('provider_id'),
-            $request->input('email')
-        );
+        $credentials = request(['email', 'password']);
 
-        $user = $userSocialite->user;
-        $userToken = auth('api')->login($user);
+        if (! $accessToken = auth('api')->attempt($credentials)) {
+            return response()->json(['message' => trans('cms.unauthorized')], Response::HTTP_UNAUTHORIZED);
+        }
 
         return response()->json([
             'data' => [
-                'access_token' => $userToken,
+                'access_token' => $accessToken,
             ]
         ]);
     }

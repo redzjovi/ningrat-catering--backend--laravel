@@ -9,86 +9,86 @@
 			"name": "auth",
 			"item": [
 				{
-					"name": "social",
-					"item": [
+					"name": "login",
+					"event": [
 						{
-							"name": "login",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "469354c8-ada1-44fd-95fd-065bdb80d44d",
-										"exec": [
-											"if (responseCode.code === 200) {",
-											"    var jsonData = JSON.parse(responseBody);",
-											"    postman.setEnvironmentVariable('ACCESS_TOKEN', jsonData.data.access_token);",
-											"} else {",
-											"    postman.setEnvironmentVariable('ACCESS_TOKEN', '');",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/x-www-form-urlencoded",
-										"type": "text"
-									}
+							"listen": "test",
+							"script": {
+								"id": "548cf35a-ea27-4a2d-a268-2f176716db3d",
+								"exec": [
+									"if (responseCode.code === 200) {",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    postman.setEnvironmentVariable('ACCESS_TOKEN', jsonData.data.access_token);",
+									"} else {",
+									"    postman.setEnvironmentVariable('ACCESS_TOKEN', '');",
+									"}"
 								],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "provider",
-											"value": "facebook",
-											"type": "text"
-										},
-										{
-											"key": "provider_id",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "data",
-											"value": "[]",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "user@mailinator.com",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{APP_URL_API}}/auth/social/login",
-									"host": [
-										"{{APP_URL_API}}"
-									],
-									"path": [
-										"auth",
-										"social",
-										"login"
-									]
-								}
-							},
-							"response": []
+								"type": "text/javascript"
+							}
 						}
 					],
-					"_postman_isSubFolder": true
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "email_1567336554@mailinator.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{APP_URL_API}}/auth/login",
+							"host": [
+								"{{APP_URL_API}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
 				},
 				{
 					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b06c2c95-ff8a-4b99-8792-f60fcb6dc984",
+								"exec": [
+									"if (responseCode.code === 200) {",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    postman.setEnvironmentVariable('ACCESS_TOKEN', jsonData.data.access_token);",
+									"} else {",
+									"    postman.setEnvironmentVariable('ACCESS_TOKEN', '');",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -170,6 +170,84 @@
 							"path": [
 								"auth",
 								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth/social",
+			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "469354c8-ada1-44fd-95fd-065bdb80d44d",
+								"exec": [
+									"if (responseCode.code === 200) {",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    postman.setEnvironmentVariable('ACCESS_TOKEN', jsonData.data.access_token);",
+									"} else {",
+									"    postman.setEnvironmentVariable('ACCESS_TOKEN', '');",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "provider",
+									"value": "facebook",
+									"type": "text"
+								},
+								{
+									"key": "provider_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "data",
+									"value": "[]",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user@mailinator.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{APP_URL_API}}/auth/social/login",
+							"host": [
+								"{{APP_URL_API}}"
+							],
+							"path": [
+								"auth",
+								"social",
+								"login"
 							]
 						}
 					},
