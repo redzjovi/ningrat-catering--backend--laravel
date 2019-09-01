@@ -11,7 +11,7 @@ trait UserSocialiteTrait
      * @param string $provider
      * @param string $providerId
      * @param string $email
-     * @return object $userSocialite UserSocialite
+     * @return object $userSocialite \App\Models\UserSocialite
      */
     public static function createOrUpdateUserSocialiteByProviderAndProviderId($data, $provider, $providerId, $email)
     {
@@ -38,7 +38,7 @@ trait UserSocialiteTrait
      * @param int $userId
      * @param string $provider
      * @param string $providerId
-     * @return object $userSocialite UserSocialite
+     * @return object $userSocialite \App\Models\UserSocialite
      */
     public static function getUserSocialiteWhere($userId, $provider, $providerId)
     {

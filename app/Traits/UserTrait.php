@@ -6,7 +6,7 @@ trait UserTrait
 {
     /**
      * @param string $email
-     * @return object $user
+     * @return object $user \App\User
      */
     public static function createUserByEmail($email)
     {
@@ -20,8 +20,25 @@ trait UserTrait
     }
 
     /**
+     * @param string $name
      * @param string $email
-     * @return object $user
+     * @param string $password
+     * @return object $user \App\User
+     */
+    public static function createUserByNameAndEmailAndPassword($name, $email, $password)
+    {
+        $user = self::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => \Hash::make($password),
+        ]);
+
+        return $user;
+    }
+
+    /**
+     * @param string $email
+     * @return object $user \App\User
      */
     public static function getOrCreateUserByEmail($email)
     {
