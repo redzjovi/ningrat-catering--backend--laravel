@@ -79,6 +79,7 @@ composer install
 - Copy .env.example to .env, and update all setting
 - Run command
 ```
+php artisan apidoc:generate
 php artisan jwt:secret
 php artisan key:generate
 php artisan migrate
