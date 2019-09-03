@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/auth/login')->uses('Api\Auth\LoginController@store');
+Route::post('/auth/logout')->middleware('auth:api')->uses('Api\Auth\LogoutController@store');
 Route::post('/auth/register')->uses('Api\Auth\RegisterController@store');
 Route::post('/auth/social/login')->uses('Api\Auth\Social\LoginController@store');
 Route::get('/auth/user')->middleware('auth:api')->uses('Api\Auth\UserController@index');
