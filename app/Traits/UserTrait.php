@@ -50,4 +50,28 @@ trait UserTrait
 
         return $user;
     }
+
+    /**
+     * @param string $email
+     * @return object $user \App\User
+     */
+    public static function getUserOrFailWhereEmail($email)
+    {
+        $user = self::where('email', $email)->firstOrFail();
+
+        return $user;
+    }
+
+    /**
+     * @param string $password
+     * @param object $user
+     * @return object $user \App\User
+     */
+    public static function updateUserSetPasswordWhereUser($password, $user)
+    {
+        $user->password = \Hash::make($password);
+        $user->save();
+
+        return $user;
+    }
 }

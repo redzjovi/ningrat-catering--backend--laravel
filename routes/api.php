@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/auth/forgot-password')->uses('Api\Auth\ForgotPasswordController@store');
 Route::post('/auth/login')->uses('Api\Auth\LoginController@store');
 Route::post('/auth/logout')->middleware('auth:api')->uses('Api\Auth\LogoutController@store');
 Route::post('/auth/register')->uses('Api\Auth\RegisterController@store');
