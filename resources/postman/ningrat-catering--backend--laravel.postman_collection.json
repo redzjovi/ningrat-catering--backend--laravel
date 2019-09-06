@@ -348,6 +348,79 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "auth/user",
+			"item": [
+				{
+					"name": "change-password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "668ed942-95b1-43ea-9ae7-9a497c396377",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "old_password",
+									"value": "enniDrIR",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "123456789",
+									"type": "text"
+								},
+								{
+									"key": "confirm_password",
+									"value": "123456789\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{APP_URL_API}}/auth/user/change-password",
+							"host": [
+								"{{APP_URL_API}}"
+							],
+							"path": [
+								"auth",
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

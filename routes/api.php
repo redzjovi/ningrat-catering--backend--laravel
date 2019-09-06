@@ -23,3 +23,4 @@ Route::post('/auth/logout')->middleware('auth:api')->uses('Api\Auth\LogoutContro
 Route::post('/auth/register')->uses('Api\Auth\RegisterController@store');
 Route::post('/auth/social/login')->uses('Api\Auth\Social\LoginController@store');
 Route::get('/auth/user')->middleware('auth:api')->uses('Api\Auth\UserController@index');
+Route::post('/auth/user/change-password')->middleware('auth:api')->uses('Api\Auth\User\ChangePasswordController@store');
