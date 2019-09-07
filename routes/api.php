@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/auth/social/login', 'Api\Auth\Social\LoginController@store');
+Route::get('/auth/user', 'Api\Auth\UserController@index')->middleware('auth:api');

@@ -24,6 +24,13 @@ class LoginController extends Controller
             $request->input('email')
         );
 
-        return new UserSocialiteResource($userSocialite);
+        $user = $userSocialite->user;
+        $userToken = auth('api')->login($user);
+
+        return response()->json([
+            'data' => [
+                'access_token' => $userToken,
+            ]
+        ]);
     }
 }
