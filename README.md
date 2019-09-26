@@ -88,3 +88,20 @@ php artisan storage:link
 
 ## To Do
 -
+cuisine
+    id
+    name
+
+flavor
+    id
+    name
+
+ingredient
+    id
+    name
+
+product
+    id
+    name
+    excerpt
+    sell_price

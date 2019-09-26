@@ -24,3 +24,8 @@ Route::post('/auth/register')->uses('Api\Auth\RegisterController@store');
 Route::post('/auth/social/login')->uses('Api\Auth\Social\LoginController@store');
 Route::get('/auth/user')->middleware('auth:api')->uses('Api\Auth\UserController@index');
 Route::post('/auth/user/change-password')->middleware('auth:api')->uses('Api\Auth\User\ChangePasswordController@store');
+Route::get('/product')->uses('Api\ProductController@index');
+Route::post('/product')->uses('Api\ProductController@store');
+Route::get('/product/{id}')->uses('Api\ProductController@show');
+Route::put('/product/{id}')->uses('Api\ProductController@update');
+Route::delete('/product/{id}')->uses('Api\ProductController@destroy');
